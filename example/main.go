@@ -42,6 +42,14 @@ func main() {
 		panic(err)
 	}
 
+	// Send simple message
+	m.SendMessage(&mailman.MessageInfo{
+		Subject:   "Test",
+		DistEmail: email,
+		Content:   "Hello, world!",
+	})
+
+	// Send templated message
 	m.SendMessage(&mailman.MessageInfo{
 		TemplateName: "test",
 		Subject:      "Test",

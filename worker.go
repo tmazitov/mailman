@@ -40,12 +40,17 @@ func (m *Mailman) makeMessage(info *MessageInfo) (*gomail.Message, error) {
 		content  string
 	)
 
-	template = m.templates[info.TemplateName]
-	if template == nil {
-		return nil, ErrUndefinedTemplate
-	}
+	if info.Content == "" {
 
-	content = template.PrepareMessageContent(info.FieldValues)
+		template = m.templates[info.TemplateName]
+		if template == nil {
+			return nil, ErrUndefinedTemplate
+		}
+
+		content = template.PrepareMessageContent(info.FieldValues)
+	} else {
+		content = info.Content
+	}
 
 	message = gomail.NewMessage()
 	message.SetHeader("From", m.config.Email)

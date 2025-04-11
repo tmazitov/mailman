@@ -5,11 +5,12 @@ type MessageInfo struct {
 	Subject      string
 	DistEmail    string
 	FieldValues  map[string]string
+	Content      string
 }
 
 func (m *Mailman) SendMessage(info *MessageInfo) error {
 
-	if info == nil {
+	if info == nil || info.DistEmail == "" || (info.TemplateName == "" && info.Content == "") {
 		return ErrInvalidMessageInfo
 	}
 
