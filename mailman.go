@@ -53,7 +53,7 @@ func (m *Mailman) Stop() {
 	close(m.emailChan)
 }
 
-func (m *Mailman) SetupMailTemplates(info []*template.MessageTemplateInfo) error {
+func (m *Mailman) SetupMessageTemplates(info []*template.MessageTemplateInfo) error {
 
 	var (
 		newTemplate *template.MessageTemplate

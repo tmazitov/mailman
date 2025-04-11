@@ -10,7 +10,6 @@ import (
 	"github.com/tmazitov/mailman/template"
 )
 
-
 func main() {
 	if len(os.Args) < 3 {
 		log.Fatalf("Usage: %s <email> <password>", os.Args[0])
@@ -32,7 +31,7 @@ func main() {
 	m.Start()
 	defer m.Stop()
 
-	err = m.SetupMailTemplates([]*template.MessageTemplateInfo{
+	err = m.SetupMessageTemplates([]*template.MessageTemplateInfo{
 		{
 			Name:     "test",
 			FilePath: "template.html",
