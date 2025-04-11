@@ -32,7 +32,7 @@ func checkFileContentByFields(content string, fields []string) error {
 			}
 		}
 
-		if !strings.Contains(content, "{{."+field+"}}") {
+		if field == "" || !strings.Contains(content, "{{."+field+"}}") {
 			return ErrNotEnoughFields
 		}
 

@@ -44,7 +44,7 @@ func main() {
 
 	// Send simple message
 	m.SendMessage(&mailman.MessageInfo{
-		Subject:   "Test",
+		Subject:   "Test",	
 		DistEmail: email,
 		Content:   "Hello, world!",
 	})
