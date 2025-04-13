@@ -33,9 +33,9 @@ func main() {
 
 	err = m.SetupMessageTemplates([]*template.MessageTemplateInfo{
 		{
-			Name:     "test",
-			FilePath: "template.html",
-			Fields:   []string{"firstName", "lastName"},
+			Name:   "test",
+			Path:   "template.html",
+			Fields: []string{"firstName", "lastName"},
 		},
 	})
 	if err != nil {
@@ -44,7 +44,7 @@ func main() {
 
 	// Send simple message
 	m.SendMessage(&mailman.MessageInfo{
-		Subject:   "Test",	
+		Subject:   "Test",
 		DistEmail: email,
 		Content:   "Hello, world!",
 	})

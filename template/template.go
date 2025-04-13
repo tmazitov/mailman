@@ -6,9 +6,9 @@ import (
 )
 
 type MessageTemplateInfo struct {
-	Name     string
-	FilePath string
-	Fields   []string
+	Name   string
+	Path   string
+	Fields []string
 }
 
 type MessageTemplate struct {
@@ -24,7 +24,7 @@ func NewMessageTemplate(info *MessageTemplateInfo) (*MessageTemplate, error) {
 		err             error
 	)
 
-	if templateContent, err = readFileContent(info.FilePath); err != nil {
+	if templateContent, err = readFileContent(info.Path); err != nil {
 		return nil, err
 	}
 	if err = checkFileContentByFields(templateContent, info.Fields); err != nil {
