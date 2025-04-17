@@ -38,6 +38,7 @@ func (m *Mailman) makeMessage(info *MessageInfo) (*gomail.Message, error) {
 		message  *gomail.Message
 		template *template.MessageTemplate
 		content  string
+		subject  string
 	)
 
 	if info.Content == "" {
@@ -52,10 +53,16 @@ func (m *Mailman) makeMessage(info *MessageInfo) (*gomail.Message, error) {
 		content = info.Content
 	}
 
+	if info.Subject == "" {
+		subject = template.Subject
+	} else {
+		subject = info.Subject
+	}
+
 	message = gomail.NewMessage()
 	message.SetHeader("From", m.config.Email)
 	message.SetHeader("To", info.DistEmail)
-	message.SetHeader("Subject", info.Subject)
+	message.SetHeader("Subject", subject)
 	message.SetBody("text/html", content)
 	return message, nil
 }

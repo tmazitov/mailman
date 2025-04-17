@@ -6,15 +6,17 @@ import (
 )
 
 type MessageTemplateInfo struct {
-	Name   string
-	Path   string
-	Fields []string
+	Name    string   `json:"name"`
+	Path    string   `json:"path"`
+	Fields  []string `json:"fields"`
+	Subject string   `json:"subject"`
 }
 
 type MessageTemplate struct {
 	Name            string
 	templateContent string
 	fields          []string
+	Subject         string
 }
 
 func NewMessageTemplate(info *MessageTemplateInfo) (*MessageTemplate, error) {
@@ -35,6 +37,7 @@ func NewMessageTemplate(info *MessageTemplateInfo) (*MessageTemplate, error) {
 		Name:            info.Name,
 		templateContent: templateContent,
 		fields:          info.Fields,
+		Subject:         info.Subject,
 	}, nil
 }
 
