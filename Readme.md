@@ -40,9 +40,9 @@ go get github.com/tmazitov/mailman
 	})
 ```
 
-4. Do not forget to close :
+4. Do not forget to stop it :
 ```go
-    defer mail.Close()
+    defer mail.Stop()
 ```
 
 ## Templating
