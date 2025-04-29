@@ -65,7 +65,7 @@ func (m *MessageTemplate) PrepareMessageContent(fieldValues map[string]string) s
 			continue
 		}
 
-		content = strings.Replace(content, "{{."+field+"}}", value, 1)
+		content = strings.ReplaceAll(content, "{{."+field+"}}", value)
 	}
 
 	return content
